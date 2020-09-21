@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <style type="text/css">
+        table {border-collapse: collapse; font-size: 14px; width: 80%; margin: auto}
+        table, th, td {border: 1px solid darkslategray;padding: 10px}
+    </style>
+</head>
+<body>
+<div style="text-align: center">
+    <span style="color: darkslategray; font-size: 30px">欢迎光临！</span>
+    <hr/>
+    <table class="list">
+        <tr>
+            <th>Id</th>
+            <th>用户名</th>
+            <th>密码</th>
+            <th>创建时间</th>
+            <th>状态</th>
+            <th>操作</th>
+        </tr>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.id}">1</td>
+            <td th:text="${user.account}">ww</td>
+            <td th:text="${user.pwd}">we</td>
+
+<!--           <td th:text="${user.sex} == 1 ? '男': '女'">男</td>-->
+<!--           <td th:text="${#dates.format(user.birthday, 'yyyy-MM-dd')}">2020-13-56</td>-->
+            <td th:text="${user.creattime}"></td>
+            <td th:text="${user.status == 0 ? '离线' : '在线'}">we</td>
+            <td>
+                <a th:href="@{/user/del(id=${user.id})}">删除</a>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
